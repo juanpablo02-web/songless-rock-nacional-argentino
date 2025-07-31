@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songless - Rock Nacional Argentino</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <button class="hamburger-btn" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="title">Song<span class="title-accent">less</span></h1>
+        </header>
+
+        <!-- Side Navigation -->
+        <nav class="side-nav" id="sideNav">
+            <div class="nav-header">
+                <h2>Lessgames</h2>
+                <button class="close-btn" id="closeBtn">×</button>
+            </div>
+            <div class="nav-content">
+                <div class="nav-games">
+                    <div class="nav-item">
+                        <span class="nav-icon">🎵</span>
+                        <span>Songless</span>
+                    </div>
+                </div>
+                <button class="sign-in-btn">INICIAR SESIÓN</button>
+                <div class="nav-footer">
+                    <p>¿Quieres trabajar con nosotros?</p>
+                    <div class="social-links">
+                        <p>Contáctanos en:</p>
+                        <a href="#">Twitter (ahora X)</a>
+                        <a href="#">Email</a>
+                    </div>
+                    <div class="legal-links">
+                        <a href="#">Términos de Servicio</a>
+                        <a href="#">Política de Privacidad</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Landing Screen -->
+            <div class="landing-screen" id="landingScreen">
+                <div class="game-description">
+                    <h2>Intenta <span class="highlight">adivinar la canción</span> escuchando pequeñas partes de ella</h2>
+                    <p class="subtitle">Rock Nacional Argentino</p>
+                </div>
+                <button class="start-btn" id="startBtn">COMENZAR</button>
+            </div>
+
+            <!-- Game Screen -->
+            <div class="game-screen hidden" id="gameScreen">
+                <!-- Genre Tabs -->
+                <div class="genre-tabs">
+                    <button class="tab-btn active" data-genre="all">Todos</button>
+                    <button class="tab-btn" data-genre="rock">Rock</button>
+                    <button class="tab-btn" data-genre="pop">Pop</button>
+                </div>
+
+                <!-- Answer Options -->
+                <div class="answer-options" id="answerOptions">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+
+                <!-- Game Info -->
+                <div class="game-info">
+                    <div class="stage-info">
+                        <span class="stage-text" id="stageText">Etapa 1</span>
+                        <span class="time-text" id="timeText">0.1 Segundos</span>
+                    </div>
+                    
+                    <!-- Audio Player -->
+                    <div class="audio-player">
+                        <audio id="gameAudio" preload="none"></audio>
+                        <div class="audio-controls">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="time-display">
+                                <span id="currentTime">0:00</span>
+                                <span id="totalTime">0:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control Buttons -->
+                    <div class="control-buttons">
+                        <button class="control-btn back-btn" id="backBtn">←</button>
+                        <button class="control-btn play-btn" id="playBtn">▶</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="results-screen hidden" id="resultsScreen">
+                <div class="result-content">
+                    <h2 id="resultTitle">¡Correcto!</h2>
+                    <div class="song-info">
+                        <h3 id="songTitle"></h3>
+                        <p id="artistName"></p>
+                    </div>
+                    <div class="score-info">
+                        <p>Adivinaste en la <span id="finalStage">Etapa 1</span></p>
+                        <p>Tiempo: <span id="finalTime">0.1 segundos</span></p>
+                    </div>
+                    <div class="result-buttons">
+                        <button class="result-btn" id="nextSongBtn">SIGUIENTE CANCIÓN</button>
+                        <button class="result-btn secondary" id="backToMenuBtn">VOLVER AL MENÚ</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Screen -->
+        <div class="loading-screen hidden" id="loadingScreen">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p>Cargando canción...</p>
+            </div>
+        </div>
+
+        <!-- Error Screen -->
+        <div class="error-screen hidden" id="errorScreen">
+            <div class="error-content">
+                <h2>Error</h2>
+                <p id="errorMessage">No se pudo cargar la canción. Intenta nuevamente.</p>
+                <button class="error-btn" id="retryBtn">REINTENTAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- YouTube Player Container (oculto) -->
+    <div id="youtube-player"></div>
+
+    <script src="config.js"></script>
+    <script src="songs-database.js"></script>
+    <script src="youtube-api.js"></script>
+    <script src="game.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
